@@ -12,14 +12,17 @@ namespace SNMP
     class Snmp
     {
         Socket s;
-        byte[] version = new byte[4];        
+        byte[] Version = new byte[4];
+        public string CommunityName;
 
-        public Snmp()
+        public Snmp(string communityName)
         {
-            version[3] = 2;
+            /* only version number 2 is supported */
+            Version[3] = 0x02;
+            CommunityName = communityName;
         }
 
-        public void ListenForTraps(IPAddress address)
+        public void ListenForTraps()
         { 
             
         }
