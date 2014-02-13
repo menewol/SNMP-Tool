@@ -33,17 +33,17 @@ namespace SNMP
 
             switch (command)
             {
-                case "getRequest":
+                case "get":
                 {
                     break;
                 }
 
-                case "getNextRequest":
+                case "getNext":
                 {
                     break;
                 }
 
-                case "getBulkRequest":
+                case "getBulk":
                 {
                     break;
                 }
@@ -63,13 +63,30 @@ namespace SNMP
                     ShowCommands();
                     break;
                 }
+
+                case "clear":
+                {
+                    Console.Clear();
+                    break;
+                }
+
+                case "close":
+                {
+                    Environment.Exit(0);
+                    break;
+                }
             }
         }
 
         private static void ShowCommands()
         {
-            Console.WriteLine("\ngetRequest                            Abfrage eines Datensatzes");
-            Console.WriteLine("getNextRequest                            Abfrage des nächsten Datensatzes");
+            Console.WriteLine("\nget                                Abfrage eines Datensatzes");
+            Console.WriteLine("getNext                            Abfrage des nächsten Datensatzes");
+            Console.WriteLine("getBulk                            Abfrage von mehreren Datensätzen");
+            Console.WriteLine("set                                Bearbeiten eines Datensatzes");
+            Console.WriteLine("listen                             Hören nach Trap-Nachrichten");
+            Console.WriteLine("clear                              Löschen des Bildschirminhaltes");
+            Console.WriteLine("close                              Beenden der Anwendung\n");
         }
     }
 }

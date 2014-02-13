@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace SNMP
 {
     class Pdu
-
     {
         public enum PDUType
         {
             GetRequest, GetNextRequest, Response, SetRequest, GetBulkRequest, InformRequest,Trapv2,Report
         }
+
         byte[] requestID = new byte[4];
         byte[] errorStatus = new byte[4];
         byte[] errorIndex = new byte[4];
@@ -21,7 +21,6 @@ namespace SNMP
 
 
         public Pdu(PDUType MessageType)
-
         {
             Random rnd = new Random();
             rnd.NextBytes(requestID);
