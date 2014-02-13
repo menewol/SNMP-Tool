@@ -38,6 +38,21 @@ namespace SNMP
                     break;
                 }
 
+                case "getNextRequest":
+                {
+                    break;
+                }
+
+                case "getBulkRequest":
+                {
+                    break;
+                }
+
+                case "set":
+                {
+                    break;
+                }
+                    
                 case "listen":
                 {                 
                     break;
@@ -45,9 +60,16 @@ namespace SNMP
 
                 case "help":
                 {
+                    ShowCommands();
                     break;
                 }
             }
+        }
+
+        private static void ShowCommands()
+        {
+            Console.WriteLine("\ngetRequest                            Abfrage eines Datensatzes");
+            Console.WriteLine("getNextRequest                            Abfrage des nächsten Datensatzes");
         }
     }
 }
