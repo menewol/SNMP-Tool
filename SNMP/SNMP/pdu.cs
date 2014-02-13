@@ -8,6 +8,10 @@ namespace SNMP
 {
     class pdu
     {
+        public enum PDUType
+        {
+            GetRequest, GetNextRequest,Response,SetRequest,GetBulkRequest
+        }
         public pdu()
         { 
             
