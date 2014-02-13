@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SNMP
 {
-    class pdu
+    class PDU
     {
         public enum PDUType
         {
@@ -18,7 +18,7 @@ namespace SNMP
         byte[] pduType = new byte[4];
         byte[] pdu;
 
-        public pdu(PDUType MessageType)
+        public PDU(PDUType MessageType)
         {
             Random rnd = new Random();
             rnd.NextBytes(requestID);
