@@ -8,5 +8,9 @@ namespace SNMP
 {
     class pdu
     {
+        public pdu()
+        { 
+            
+        }
     }
 }

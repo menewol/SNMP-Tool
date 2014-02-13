@@ -10,6 +10,7 @@ namespace SNMP
     {
         static void Main(string[] args)
         {
+            Console.Title = "";
         }
     }
 }
