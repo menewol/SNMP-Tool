@@ -9,20 +9,19 @@ using System.Net.Sockets;
 namespace SNMP
 {
     
-    class snmp
+    class Snmp
     {
-        const string CommunityString = "ntma_snmp";
-        byte[] version = new byte[4];
         Socket s;
+        byte[] version = new byte[4];        
 
-        public snmp(int versionNumber)
+        public Snmp()
         {
-            if (versionNumber <= 3)
-            {
-                version = BitConverter.GetBytes(versionNumber);
-            }
+            version[3] = 2;
         }
 
-
+        public void ListenForTraps(IPAddress address)
+        { 
+            
+        }
     }
 }
