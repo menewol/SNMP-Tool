@@ -31,8 +31,15 @@ namespace SNMP
         {
             string[] command_arr = command.Split(' ');
 
-            switch (command)
+            switch (command_arr[0])
             {
+                case "communityString":
+                {
+                    snmp.CommunityName = command_arr[1];
+                    Console.WriteLine("Community String ist jetzt: " + snmp.CommunityName + "\n");
+                    break;
+                }
+
                 case "get":
                 {
                     break;
@@ -75,12 +82,19 @@ namespace SNMP
                     Environment.Exit(0);
                     break;
                 }
+
+                default:
+                {
+                   Console.WriteLine("Dieser Befehl ist nicht bekannt.\n"); 
+                   break;
+                }
             }
         }
 
         private static void ShowCommands()
         {
-            Console.WriteLine("\nget                                Abfrage eines Datensatzes");
+            Console.WriteLine("\ncommunityString                    Ändern des CommunityStrings");
+            Console.WriteLine("get                                Abfrage eines Datensatzes");
             Console.WriteLine("getNext                            Abfrage des nächsten Datensatzes");
             Console.WriteLine("getBulk                            Abfrage von mehreren Datensätzen");
             Console.WriteLine("set                                Bearbeiten eines Datensatzes");
