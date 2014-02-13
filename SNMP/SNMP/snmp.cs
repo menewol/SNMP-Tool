@@ -13,7 +13,10 @@ namespace SNMP
         byte[] version = new byte[4];
         private snmp(int versionNumber)
         {
-            version = Encoding.Default.GetBytes(versionNumber.ToString());
+            if (versionNumber <= 3)
+            {
+                version = Encoding.Default.GetBytes(versionNumber.ToString());
+            }
         }
 
     }
