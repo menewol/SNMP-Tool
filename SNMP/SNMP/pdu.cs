@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace SNMP
 {
+<<<<<<< HEAD
 
     class Pdu
+=======
+    class pdu
+>>>>>>> parent of eac7b7e... a commit
     {
         public enum PDUType
         {
@@ -19,9 +23,13 @@ namespace SNMP
         byte[] pduType = new byte[4];
         byte[] pdu;
 
+<<<<<<< HEAD
 
         public Pdu(PDUType MessageType)
 
+=======
+        public pdu(PDUType MessageType)
+>>>>>>> parent of eac7b7e... a commit
         {
             Random rnd = new Random();
             rnd.NextBytes(requestID);
