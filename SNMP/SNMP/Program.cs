@@ -23,8 +23,8 @@ namespace SNMP
             while (true)
             {
                 Console.Write("SNMP> ");
-                DoCommand(Console.ReadLine());                
-            }
+                DoCommand(Console.ReadLine());
+            }            
         }
 
         private static void DoCommand(string command)
@@ -61,7 +61,8 @@ namespace SNMP
                 }
                     
                 case "listen":
-                {                 
+                {
+                    snmp.ListenForTraps();
                     break;
                 }
 

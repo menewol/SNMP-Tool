@@ -8,7 +8,7 @@ namespace SNMP
 {
     class Pdu
     {
-        public enum PDUType
+        public enum PduType
         {
             GetRequest, GetNextRequest, Response, SetRequest, GetBulkRequest, InformRequest,Trapv2,Report
         }
@@ -20,36 +20,37 @@ namespace SNMP
         byte[] pdu;
 
 
-        public Pdu(PDUType MessageType)
+        public Pdu(PduType MessageType)
         {
             Random rnd = new Random();
             rnd.NextBytes(requestID);
             errorStatus = null;
             errorIndex = null;
+
             switch (MessageType)
             {
-                case PDUType.GetRequest:
+                case PduType.GetRequest:
                     pduType[3] = 0;
                     break;
-                case PDUType.GetNextRequest:
+                case PduType.GetNextRequest:
                     pduType[3] = 1;
                     break;
-                case PDUType.Response:
+                case PduType.Response:
                     pduType[3] = 2;
                     break;
-                case PDUType.SetRequest:
+                case PduType.SetRequest:
                     pduType[3] = 3;
                     break;
-                case PDUType.GetBulkRequest:
+                case PduType.GetBulkRequest:
                     pduType[3] = 5;
                     break;
-                case PDUType.InformRequest:
+                case PduType.InformRequest:
                     pduType[3] = 6;
                     break;
-                case PDUType.Trapv2:
+                case PduType.Trapv2:
                     pduType[3] = 7;
                     break;
-                case PDUType.Report:
+                case PduType.Report:
                     pduType[3] = 8;
                     break;
             }

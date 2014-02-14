@@ -10,3 +10,9 @@ C:\Users\Christoph\Documents\GitHub\SNMP-Tool\SNMP\SNMP\obj\Debug\SNMP.pdb
 C:\Users\Christoph\Documents\GitHub\SNMP-Tool\SNMP\SNMP\bin\Debug\SNMP.exe
 C:\Users\Christoph\Documents\GitHub\SNMP-Tool\SNMP\SNMP\bin\Debug\SNMP.pdb
 C:\Users\Christoph\Documents\GitHub\SNMP-Tool\SNMP\SNMP\obj\Debug\SNMP.csprojResolveAssemblyReference.cache
+C:\Users\schueler\Documents\GitHub\SNMP-Tool\SNMP\SNMP\bin\Debug\SNMP.exe.config
+C:\Users\schueler\Documents\GitHub\SNMP-Tool\SNMP\SNMP\obj\Debug\SNMP.exe
+C:\Users\schueler\Documents\GitHub\SNMP-Tool\SNMP\SNMP\obj\Debug\SNMP.pdb
+C:\Users\schueler\Documents\GitHub\SNMP-Tool\SNMP\SNMP\bin\Debug\SNMP.exe
+C:\Users\schueler\Documents\GitHub\SNMP-Tool\SNMP\SNMP\bin\Debug\SNMP.pdb
+C:\Users\schueler\Documents\GitHub\SNMP-Tool\SNMP\SNMP\obj\Debug\SNMP.csprojResolveAssemblyReference.cache

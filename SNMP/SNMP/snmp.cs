@@ -23,7 +23,7 @@ namespace SNMP
         }
 
         public void ListenForTraps()
-        { 
+        {
             
         }
     }
