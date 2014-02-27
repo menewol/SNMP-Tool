@@ -12,19 +12,22 @@ namespace SNMP
     class Snmp
     {
         Socket s;
-        byte[] Version = new byte[4];
-        public string CommunityName;
+        Pdu pdu;
+        byte[] version = new byte[4];
+        public string communityName;
 
-        public Snmp(string communityName)
+        public Snmp(string communityName, Pdu.PduType type, string Oid)
         {
             /* only version number 2 is supported */
-            Version[3] = 0x02;
-            CommunityName = communityName;
+            version[3] = 0x02;
+            this.communityName = communityName;
+            pdu = new Pdu(type, Oid);
         }
 
-        public void ListenForTraps()
+        public byte[] ToArray()
         {
-            
+            /* convert to object into a byte[] */
+            return null;
         }
     }
 }

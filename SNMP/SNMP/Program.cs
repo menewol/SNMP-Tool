@@ -8,45 +8,38 @@ namespace SNMP
 {
     class Program
     {
-        static Snmp snmp;
+        static SnmpServices snmp;
 
         static void Main(string[] args)
         {
             Console.Title = "SNMP Tool";
-            Console.Write("Geben Sie einem Community String ein: ");
-            
-            snmp = new Snmp(Console.ReadLine());
-            Console.WriteLine("Community String ist jetzt: " + snmp.CommunityName + "\n");
-            Console.WriteLine("Zum Ändern oder sonstige Hilfen geben Sie 'help' ein\n");
+
+            Console.WriteLine("For further information please enter help...\n");
 
             /* listen for SNMP-commands */
             while (true)
             {
                 Console.Write("SNMP> ");
-                DoCommand(Console.ReadLine());
+                DoCommand(Console.ReadLine());               
             }            
         }
 
         private static void DoCommand(string command)
         {
             string[] command_arr = command.Split(' ');
-
+            
+            /* community string soll bei jedem befehl extra eingegeben werden */
             switch (command_arr[0])
             {
-                case "communityString":
-                {
-                    snmp.CommunityName = command_arr[1];
-                    Console.WriteLine("Community String ist jetzt: " + snmp.CommunityName + "\n");
-                    break;
-                }
-
                 case "get":
                 {
+                    snmp.Get(command_arr[1], "oid");
                     break;
                 }
 
                 case "getNext":
                 {
+                    snmp.GetNext(command_arr[1]);
                     break;
                 }
 
@@ -68,6 +61,8 @@ namespace SNMP
 
                 case "help":
                 {
+                    /* wenn nachher noch parameter sind, dann checken ob ein befehl dahinter steht *
+                     * dann nämlich befehl plus alle paramter genauer erklären */
                     ShowCommands();
                     break;
                 }
@@ -86,7 +81,7 @@ namespace SNMP
 
                 default:
                 {
-                   Console.WriteLine("Dieser Befehl ist nicht bekannt.\n"); 
+                   Console.WriteLine("Invalid command.\n"); 
                    break;
                 }
             }
@@ -94,8 +89,7 @@ namespace SNMP
 
         private static void ShowCommands()
         {
-            Console.WriteLine("\ncommunityString                    Ändern des CommunityStrings");
-            Console.WriteLine("get                                Abfrage eines Datensatzes");
+            Console.WriteLine("\nget                                Abfrage eines Datensatzes");
             Console.WriteLine("getNext                            Abfrage des nächsten Datensatzes");
             Console.WriteLine("getBulk                            Abfrage von mehreren Datensätzen");
             Console.WriteLine("set                                Bearbeiten eines Datensatzes");
