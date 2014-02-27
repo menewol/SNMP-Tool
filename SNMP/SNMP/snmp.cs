@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization;
 
 namespace SNMP
 {
@@ -14,19 +15,21 @@ namespace SNMP
         Socket s;
         Pdu pdu;
         byte[] version = new byte[4];
-        public string communityName;
+        string communityName;
 
-        public Snmp(string communityName, Pdu.PduType type, string Oid)
+        public Snmp(string communityName, Pdu.PduType type, string oid)
         {
             /* only version number 2 is supported */
             version[3] = 0x02;
             this.communityName = communityName;
-            pdu = new Pdu(type, Oid);
+            pdu = new Pdu(type, oid);
         }
 
-        public byte[] ToArray()
+        public byte[] ToArray(Snmp obj)
         {
-            /* convert to object into a byte[] */
+            /* converts an object into a byte[] */
+            int number = 3;
+            string test = number.ToString();
             return null;
         }
     }

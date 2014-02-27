@@ -12,6 +12,8 @@ namespace SNMP
 
         static void Main(string[] args)
         {
+            snmp = new SnmpServices();
+
             Console.Title = "SNMP Tool";
 
             Console.WriteLine("For further information please enter help...\n");
@@ -33,13 +35,20 @@ namespace SNMP
             {
                 case "get":
                 {
-                    snmp.Get(command_arr[1], "oid");
+                    try
+                    {
+                        snmp.Get(command_arr[1], "oid");
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("\nInvalid parameters. Type 'help' for further information...\n");
+                    }                  
                     break;
                 }
 
                 case "getNext":
                 {
-                    snmp.GetNext(command_arr[1]);
+                    snmp.GetNext(command_arr[1], "oid");
                     break;
                 }
 
@@ -96,6 +105,7 @@ namespace SNMP
             Console.WriteLine("listen                             Hören nach Trap-Nachrichten");
             Console.WriteLine("clear                              Löschen des Bildschirminhaltes");
             Console.WriteLine("close                              Beenden der Anwendung\n");
+            Console.WriteLine("For details enter help 'command'...\n");
         }
     }
 }
