@@ -1,4 +1,8 @@
-Basic SNMP command line tool (manager) for SNMP-functions
+SNMP command line tool
 =========================================================
+
+ - Basic SNMP command line tool (manager)
+
+ - usage: ...
 
 ---- project is still in developement ----
