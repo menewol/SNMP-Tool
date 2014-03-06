@@ -17,7 +17,7 @@ namespace SNMP
         byte[] version = new byte[4];
         string communityName;
 
-        public Snmp(string communityName, Pdu.PduType type, string oid)
+        public Snmp(string communityName, Pdu.PduType type, string oid, string octetString)
         {
             /* only version number 2 is supported */
             version[3] = 0x02;
@@ -27,9 +27,9 @@ namespace SNMP
 
         public byte[] ToArray(Snmp obj)
         {
-            /* converts an object into a byte[] */
-            int number = 3;
-            string test = number.ToString();
+            /* converts an SNMP object into a byte[] */
+
+
             return null;
         }
     }

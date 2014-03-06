@@ -37,7 +37,7 @@ namespace SNMP
                 {
                     try
                     {
-                        snmp.Get(command_arr[1], "oid");
+                        snmp.Get(command_arr[1], command_arr[2]);
                     }
                     catch (Exception)
                     {
@@ -59,6 +59,8 @@ namespace SNMP
 
                 case "set":
                 {
+                    // Octet String (String to Byte)
+                    snmp.Set(command_arr[1], command_arr[2], command_arr[3]);
                     break;
                 }
                     

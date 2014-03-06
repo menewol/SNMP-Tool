@@ -15,8 +15,8 @@ namespace SNMP
 
         public string Get(string communityName, string oid)
         {
-            snmp = new Snmp(communityName, Pdu.PduType.GetRequest, oid);
-            byte[] test = snmp.ToArray(snmp);
+            snmp = new Snmp(communityName, Pdu.PduType.GetRequest, oid, null);
+            byte[] data = snmp.ToArray(snmp);
             
             /* send request on port 161 */
 
@@ -35,6 +35,8 @@ namespace SNMP
         public void Set(string communityName, string oid, string value)
         { 
             /* sets the entry with the given oid */
+            snmp = new Snmp(communityName, Pdu.PduType.SetRequest, oid, value);
+            
         }
 
         public void ListenForTraps()
