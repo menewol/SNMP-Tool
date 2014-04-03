@@ -24,10 +24,7 @@ namespace SNMP
         {
             Random rnd = new Random();
             rnd.NextBytes(requestID);
-            errorStatus = null;
-            errorIndex = null;
             this.oid = Encoding.Default.GetBytes(oid);
-
 
             switch (messageType)
             {
@@ -37,7 +34,6 @@ namespace SNMP
                     break;
                 case PduType.GetNextRequest:
                     pduType[3] = 0x01;
-
                     break;
                 case PduType.Response:
                     pduType[3] = 0x02;

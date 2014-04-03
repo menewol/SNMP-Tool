@@ -8,8 +8,7 @@ using System.Net.Sockets;
 using System.Runtime.Serialization;
 
 namespace SNMP
-{
-    
+{   
     class Snmp
     {
         Socket s;
@@ -20,7 +19,7 @@ namespace SNMP
         public Snmp(string communityName, Pdu.PduType type, string oid, string value)
         {
             /* only version number 2 is supported */
-            version[3] = 0x02;
+            version[3] = 1;
             this.communityName = Encoding.Default.GetBytes(communityName);
             pdu = new Pdu(type, oid, value);
         }

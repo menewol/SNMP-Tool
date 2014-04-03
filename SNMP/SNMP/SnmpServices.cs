@@ -32,12 +32,22 @@ namespace SNMP
             return null;
         }
 
-        public void Set(string communityName, string oid, string value, IPAddress address)
+        public byte[] Set(string communityName, string oid, string value, IPAddress address)
         { 
             /* sets the entry with the given oid */
             snmp = new Snmp(communityName, Pdu.PduType.SetRequest, oid, value);
             s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            s.SendTo(snmp.ToArray(), new IPEndPoint(address, 161));
+            EndPoint endp = new IPEndPoint(address, 161);
+            /* send the snmp set request */
+            s.SendTo(snmp.ToArray(), endp);
+
+            Console.WriteLine("Bin da");
+
+            byte[] buffer = new byte[1024];
+            /* receive the answer */
+            s.ReceiveFrom(buffer, ref endp);
+
+            return buffer;
         }
 
         public void ListenForTraps()

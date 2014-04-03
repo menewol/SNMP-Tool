@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace SNMP
 {
@@ -60,7 +61,18 @@ namespace SNMP
                 case "set":
                 {
                     // Octet String (String to Byte)
-                    snmp.Set(command_arr[1], command_arr[2], command_arr[3]);
+                    IPAddress address;
+                    try
+                    {
+                        address = IPAddress.Parse(command_arr[4]);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Ungültige Ip-Adresse eingegeben!");
+                        break;
+                    }
+                    /* SET-command: communityName, object identifier, value, ip-address */
+                    byte[] receive = snmp.Set(command_arr[1], command_arr[2], command_arr[3], address);
                     break;
                 }
                     
