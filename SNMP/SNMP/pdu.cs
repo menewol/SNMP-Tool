@@ -11,8 +11,7 @@ namespace SNMP
         public enum PduType
         {
             GetRequest, GetNextRequest, Response, SetRequest, GetBulkRequest, InformRequest, Trapv2, Report
-        }
-
+        }  
         byte[] requestID = new byte[4];
         byte[] errorStatus = new byte[4];
         byte[] errorIndex = new byte[4];
