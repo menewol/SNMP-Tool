@@ -16,7 +16,7 @@ namespace SNMP
         public string Get(string communityName, string oid)
         {
             snmp = new Snmp(communityName, Pdu.PduType.GetRequest, oid, null);
-            byte[] data = snmp.ToArray(snmp);
+            byte[] data = snmp.ToArray();
             
             /* send request on port 161 */
 
@@ -32,11 +32,12 @@ namespace SNMP
             return null;
         }
 
-        public void Set(string communityName, string oid, string value)
+        public void Set(string communityName, string oid, string value, IPAddress address)
         { 
             /* sets the entry with the given oid */
             snmp = new Snmp(communityName, Pdu.PduType.SetRequest, oid, value);
-            
+            s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            s.SendTo(snmp.ToArray(), new IPEndPoint(address, 161));
         }
 
         public void ListenForTraps()

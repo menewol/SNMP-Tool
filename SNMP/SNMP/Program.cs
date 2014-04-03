@@ -48,7 +48,7 @@ namespace SNMP
 
                 case "getNext":
                 {
-                    snmp.GetNext(command_arr[1], "oid");
+                    snmp.GetNext(command_arr[1], "oid");                    
                     break;
                 }
 

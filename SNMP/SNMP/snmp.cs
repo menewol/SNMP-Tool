@@ -15,22 +15,30 @@ namespace SNMP
         Socket s;
         Pdu pdu;
         byte[] version = new byte[4];
-        string communityName;
+        byte[] communityName;
 
-        public Snmp(string communityName, Pdu.PduType type, string oid, string octetString)
+        public Snmp(string communityName, Pdu.PduType type, string oid, string value)
         {
             /* only version number 2 is supported */
             version[3] = 0x02;
-            this.communityName = communityName;
-            pdu = new Pdu(type, oid);
+            this.communityName = Encoding.Default.GetBytes(communityName);
+            pdu = new Pdu(type, oid, value);
         }
 
-        public byte[] ToArray(Snmp obj)
+        public byte[] ToArray()
         {
             /* converts an SNMP object into a byte[] */
 
+            byte[] pdu = this.pdu.ToArray();
+            byte[] returnArray = new byte[version.Length + communityName.Length + pdu.Length];
+            /* insert version code (is always 2) */
+            Buffer.BlockCopy(version, 0, returnArray, 0, 4);
+            /* insert the community name */
+            Buffer.BlockCopy(communityName, 0, returnArray, 4, communityName.Length);
+            /* insert pdu fields */
+            Buffer.BlockCopy(pdu, 0, returnArray, 0, pdu.Length);
 
-            return null;
+            return returnArray;
         }
     }
 }
