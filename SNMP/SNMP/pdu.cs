@@ -17,18 +17,17 @@ namespace SNMP
         byte[] errorStatus = new byte[4];
         byte[] errorIndex = new byte[4];
         byte[] pduType = new byte[4];
-        byte[] Oid;
-        byte[] Oid_value;
+        byte[] oid;
+        byte[] value;
 
-
-        public Pdu(PduType MessageType, string Oid, string value)
+        public Pdu(PduType messageType, string oid, string value)
         {
             Random rnd = new Random();
             rnd.NextBytes(requestID);
             errorStatus = null;
             errorIndex = null;
 
-            switch (MessageType)
+            switch (messageType)
             {
                 case PduType.GetRequest:
                     pduType[3] = 0x00;
@@ -41,7 +40,7 @@ namespace SNMP
                     break;
                 case PduType.SetRequest:
                     pduType[3] = 0x03;
-                    Oid_value = Encoding.ASCII.GetBytes(value);
+                    this.value = Encoding.ASCII.GetBytes(value);
 
                     break;
                 case PduType.GetBulkRequest:
