@@ -26,6 +26,7 @@ namespace SNMP
             rnd.NextBytes(requestID);
             errorStatus = null;
             errorIndex = null;
+            this.oid = Encoding.Default.GetBytes(oid);
 
             switch (messageType)
             {
