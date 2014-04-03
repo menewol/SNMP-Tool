@@ -19,6 +19,7 @@ namespace SNMP
         byte[] pduType = new byte[4];
         byte[] oid;
         byte[] value;
+        int pduLength = 16;
 
         public Pdu(PduType messageType, string oid, string value)
         {
@@ -28,13 +29,16 @@ namespace SNMP
             errorIndex = null;
             this.oid = Encoding.Default.GetBytes(oid);
 
+
             switch (messageType)
             {
                 case PduType.GetRequest:
                     pduType[3] = 0x00;
+                    pduLength += oid.Length;
                     break;
                 case PduType.GetNextRequest:
                     pduType[3] = 0x01;
+
                     break;
                 case PduType.Response:
                     pduType[3] = 0x02;
@@ -42,7 +46,7 @@ namespace SNMP
                 case PduType.SetRequest:
                     pduType[3] = 0x03;
                     this.value = Encoding.ASCII.GetBytes(value);
-
+                    pduLength += oid.Length + value.Length;
                     break;
                 case PduType.GetBulkRequest:
                     pduType[3] = 0x05;
@@ -60,7 +64,16 @@ namespace SNMP
         }
         public byte[] ToArray()
         {
-            return null;
+            byte[] returnArray = new byte[pduLength];
+
+            Buffer.BlockCopy(pduType, 0, returnArray, 0, pduType.Length);
+            Buffer.BlockCopy(requestID, 0, returnArray, 4, requestID.Length);
+            Buffer.BlockCopy(errorStatus, 0, returnArray, 8, errorStatus.Length);
+            Buffer.BlockCopy(errorIndex , 0, returnArray, 12, errorIndex.Length);
+            Buffer.BlockCopy(oid, 0, returnArray, 16, oid.Length);
+            Buffer.BlockCopy(value, 0, returnArray, 16 + oid.Length, value.Length);
+
+            return returnArray;
         }
     }
 }
