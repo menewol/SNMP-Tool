@@ -22,3 +22,5 @@ C:\Users\lehrer\Documents\GitHub\SNMP-Tool\SNMP\SNMP\obj\Debug\SNMP.pdb
 C:\Users\lehrer\Documents\GitHub\SNMP-Tool\SNMP\SNMP\bin\Debug\SNMP.exe
 C:\Users\lehrer\Documents\GitHub\SNMP-Tool\SNMP\SNMP\bin\Debug\SNMP.pdb
 C:\Users\lehrer\Documents\GitHub\SNMP-Tool\SNMP\SNMP\obj\Debug\SNMP.csprojResolveAssemblyReference.cache
+C:\Users\schueler\Documents\GitHub\SNMP-Tool\SNMP\SNMP\bin\Debug\SnmpSharpNet.dll
+C:\Users\schueler\Documents\GitHub\SNMP-Tool\SNMP\SNMP\bin\Debug\SnmpSharpNet.xml

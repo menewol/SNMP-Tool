@@ -31,11 +31,11 @@ namespace SNMP
             byte[] pdu = this.pdu.ToArray();
             byte[] returnArray = new byte[version.Length + communityName.Length + pdu.Length];
             /* insert version code (is always 2) */
-            Buffer.BlockCopy(version, 0, returnArray, 0, 4);
+            Buffer.BlockCopy(version, 0, returnArray, 0, version.Length);
             /* insert the community name */
             Buffer.BlockCopy(communityName, 0, returnArray, 4, communityName.Length);
             /* insert pdu fields */
-            Buffer.BlockCopy(pdu, 0, returnArray, 0, pdu.Length);
+            Buffer.BlockCopy(pdu, 0, returnArray, version.Length+communityName.Length, pdu.Length);
 
             return returnArray;
         }
